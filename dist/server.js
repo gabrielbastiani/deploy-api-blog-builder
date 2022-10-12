@@ -1,4 +1,5 @@
 "use strict";
+require('dotenv/config')
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -25,4 +26,4 @@ app.use((err, req, res, next) => {
         message: 'Internal server error.'
     });
 });
-app.listen(process.env.PORT, () => console.log('Servidor online!!!!'));
+app.listen(process.env.PORT || 3333, () => console.log('Servidor online!!!!'));

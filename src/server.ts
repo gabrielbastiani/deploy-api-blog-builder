@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express'
 import 'express-async-errors';
 import cors from 'cors';
 import path from 'path'
-
+require('dotenv/config')
 import { router } from './routes'
 
 const app = express();
@@ -31,4 +31,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 })
 
-app.listen(process.env.PORT, () => console.log('Servidor online!!!!'))
+app.listen(process.env.PORT || 3333, () => console.log('Servidor online!!!!'))
