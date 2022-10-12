@@ -50,7 +50,7 @@ class AdminCreateUserService {
       }
     })
 
-    /* const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       host: "smtplw.com.br",
       port: 587,
       auth: {
@@ -75,7 +75,7 @@ class AdminCreateUserService {
             <div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
                 <h5>Blog Builder Seu Negocio Online</h5>
             </div>`,
-    }); */
+    });
 
     return user;
   }

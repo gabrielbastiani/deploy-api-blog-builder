@@ -16,6 +16,7 @@ exports.AdminCreateUserService = void 0;
 const client_1 = require("@prisma/client");
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
+const nodemailer_1 = __importDefault(require("nodemailer"));
 class AdminCreateUserService {
     execute({ photo, name, email, password }) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -50,32 +51,31 @@ class AdminCreateUserService {
                     authenticated: true
                 }
             });
-            /* const transporter = nodemailer.createTransport({
-              host: "smtplw.com.br",
-              port: 587,
-              auth: {
-                user: "gabrielbastiani",
-                pass: "xbZwBGam6780"
-              }
-            })
-        
-            await transporter.sendMail({
-              from: "contato@smtpemailwebapp.com.br",
-              to: "gabriel.bastiani@hotmail.com.br",
-              subject: "Confirme seu cadastro de usuario no Blog",
-              html: `<div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
-                        <h2>Confirme seu cadastro!</h2>
-                    </div>
-                    
-                    <article>
-                        <p>Olá, ${user.name}!</p>
-                        <p><a href="http://localhost:3000/userAuthenticated?user_id=${user.id}">CLIQUE AQUI</a>, para confirmar sua conta junto ao Blog e poder acessa-lo com os dados que cadastrou anteriormente.</p>
-                    </article>
-                    
-                    <div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
-                        <h5>Blog Builder Seu Negocio Online</h5>
-                    </div>`,
-            }); */
+            const transporter = nodemailer_1.default.createTransport({
+                host: "smtplw.com.br",
+                port: 587,
+                auth: {
+                    user: "gabrielbastiani",
+                    pass: "xbZwBGam6780"
+                }
+            });
+            yield transporter.sendMail({
+                from: "contato@smtpemailwebapp.com.br",
+                to: "gabriel.bastiani@hotmail.com.br",
+                subject: "Confirme seu cadastro de usuario no Blog",
+                html: `<div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
+                <h2>Confirme seu cadastro!</h2>
+            </div>
+            
+            <article>
+                <p>Olá, ${user.name}!</p>
+                <p><a href="http://localhost:3000/userAuthenticated?user_id=${user.id}">CLIQUE AQUI</a>, para confirmar sua conta junto ao Blog e poder acessa-lo com os dados que cadastrou anteriormente.</p>
+            </article>
+            
+            <div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
+                <h5>Blog Builder Seu Negocio Online</h5>
+            </div>`,
+            });
             return user;
         });
     }
