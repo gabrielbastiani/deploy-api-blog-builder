@@ -14,7 +14,7 @@ class DeleteUserController {
         user_id,
       });
 
-      fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'tmp' + '/' + userPhoto.photo)
+      fs.unlinkSync(__dirname + '/' + '..' + '/' + '..' + '/' + '..' + '/' + 'imgblog' + '/' + userPhoto.photo)
 
       const user = await removePhoto.execute({
         user_id
