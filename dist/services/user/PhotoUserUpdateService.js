@@ -8,22 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateUserController = void 0;
-const UserUpdateService_1 = require("../../services/user/UserUpdateService");
-class UpdateUserController {
-    handle(req, res) {
+exports.PhotoUserUpdateService = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class PhotoUserUpdateService {
+    execute({ user_id, photo }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user_id = req.query.user_id;
-            const { name, email } = req.body;
-            const updateUserService = new UserUpdateService_1.UserUpdateService();
-            const userUpdated = yield updateUserService.execute({
-                user_id,
-                name,
-                email,
+            const userUpdated = yield prisma_1.default.user.update({
+                where: {
+                    id: String(user_id),
+                },
+                data: {
+                    photo: photo,
+                },
+                select: {
+                    photo: true
+                }
             });
-            return res.json(userUpdated);
+            return userUpdated;
         });
     }
 }
-exports.UpdateUserController = UpdateUserController;
+exports.PhotoUserUpdateService = PhotoUserUpdateService;

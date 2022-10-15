@@ -9,21 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateUserController = void 0;
-const UserUpdateService_1 = require("../../services/user/UserUpdateService");
-class UpdateUserController {
+exports.PhotoUpdateUserController = void 0;
+const PhotoUserUpdateService_1 = require("../../services/user/PhotoUserUpdateService");
+class PhotoUpdateUserController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user_id = req.query.user_id;
-            const { name, email } = req.body;
-            const updateUserService = new UserUpdateService_1.UserUpdateService();
-            const userUpdated = yield updateUserService.execute({
-                user_id,
-                name,
-                email,
-            });
-            return res.json(userUpdated);
+            const { user_id } = req.body;
+            const updateUserService = new PhotoUserUpdateService_1.PhotoUserUpdateService();
+            if (!req.file) {
+                throw new Error('error upload file');
+            }
+            else {
+                const { originalname, filename: photo } = req.file;
+                const userUpdated = yield updateUserService.execute({
+                    user_id,
+                    photo
+                });
+                return res.json(userUpdated);
+            }
         });
     }
 }
-exports.UpdateUserController = UpdateUserController;
+exports.PhotoUpdateUserController = PhotoUpdateUserController;

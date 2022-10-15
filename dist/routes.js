@@ -9,6 +9,7 @@ const multer_1 = __importDefault(require("multer"));
 //-- ROTAS USER --
 const CreateUserController_1 = require("./controllers/user/CreateUserController");
 const UpdateUserController_1 = require("./controllers/user/UpdateUserController");
+const PhotoUpdateUserController_1 = require("./controllers/user/PhotoUpdateUserController");
 const AdminCreateUserController_1 = require("./controllers/user/AdminCreateUserController");
 const RoleUserController_1 = require("./controllers/user/RoleUserController");
 const AdminRoleUserController_1 = require("./controllers/user/AdminRoleUserController");
@@ -118,7 +119,8 @@ exports.router = router;
 const upload = (0, multer_1.default)(multer_2.default.upload("./imgblog"));
 //-- ROTAS USER --
 router.post('/users', upload.single('file'), new CreateUserController_1.CreateUserController().handle);
-router.put('/users/update', isAuthenticated_1.isAuthenticated, upload.single('file'), new UpdateUserController_1.UpdateUserController().handle);
+router.put('/users/update', isAuthenticated_1.isAuthenticated, new UpdateUserController_1.UpdateUserController().handle);
+router.put('/users/photo', isAuthenticated_1.isAuthenticated, upload.single('file'), new PhotoUpdateUserController_1.PhotoUpdateUserController().handle);
 router.post('/users/admin', upload.single('file'), new AdminCreateUserController_1.AdminCreateUserController().handle);
 router.put('/users/admin', new RoleUserController_1.RoleUserController().handle);
 router.put('/users/update/role/admin', isAuthenticated_1.isAuthenticated, new AdminRoleUserController_1.AdminRoleUserController().handle);

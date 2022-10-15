@@ -13,10 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserUpdateService = void 0;
-const client_1 = require("@prisma/client");
 const prisma_1 = __importDefault(require("../../prisma"));
 class UserUpdateService {
-    execute({ user_id, name, email, photo }) {
+    execute({ user_id, name, email }) {
         return __awaiter(this, void 0, void 0, function* () {
             const userUpdated = yield prisma_1.default.user.update({
                 where: {
@@ -25,12 +24,9 @@ class UserUpdateService {
                 data: {
                     name: name,
                     email: email,
-                    photo: photo,
-                    role: client_1.Role.USER
                 },
                 select: {
                     id: true,
-                    photo: true,
                     name: true,
                     email: true,
                     role: true
