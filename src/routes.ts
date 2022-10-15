@@ -41,6 +41,7 @@ import { DespublishArticleController } from './controllers/article/DespublishArt
 import { ListByCategoryController } from './controllers/article/ListByCategoryController';
 import { RemoveArticleController } from './controllers/article/RemoveArticleController';
 import { UpdateArticleController } from './controllers/article/UpdateArticleController';
+import { UpdateBannerArticleController } from './controllers/article/UpdateBannerArticleController';
 import { ListExactArticleController } from './controllers/article/ListExactArticleController';
 import { ListPageArticlesController } from './controllers/article/ListPageArticlesController';
 import { AdminDashboardPageArticlesController } from './controllers/article/AdminDashboardPageArticlesController';
@@ -168,7 +169,8 @@ router.put('/article/datefuture', new DatePublishedArticleController().handle)
 router.get('/article/date', new AllDatePublishedController().handle)
 router.put('/article/despublish', isAuthenticated, new DespublishArticleController().handle)
 router.delete('/article/remove', isAuthenticated, new RemoveArticleController().handle)
-router.put('/article/update', isAuthenticated, upload.single('file'), new UpdateArticleController().handle)
+router.put('/article/update', isAuthenticated, new UpdateArticleController().handle)
+router.put('/article/banner/update', isAuthenticated, upload.single('file'), new UpdateBannerArticleController().handle)
 router.get('/article/exact', new ListExactArticleController().handle)
 router.get('/article/all', new ListPageArticlesController().handle)
 router.get('/article/admin', isAuthenticated, new AdminDashboardPageArticlesController().handle)
