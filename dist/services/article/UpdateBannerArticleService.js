@@ -12,18 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeletePhotoUserService = void 0;
+exports.UpdateBannerArticleService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class DeletePhotoUserService {
-    execute({ user_id }) {
+class UpdateBannerArticleService {
+    execute({ article_id, banner }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userPhoto = yield prisma_1.default.user.findUnique({
+            const articleUpdate = yield prisma_1.default.article.update({
                 where: {
-                    id: user_id
+                    id: String(article_id),
+                },
+                data: {
+                    banner: banner,
                 }
             });
-            return userPhoto;
+            return articleUpdate;
         });
     }
 }
-exports.DeletePhotoUserService = DeletePhotoUserService;
+exports.UpdateBannerArticleService = UpdateBannerArticleService;

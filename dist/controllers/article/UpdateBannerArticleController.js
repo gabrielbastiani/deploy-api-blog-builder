@@ -9,18 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeleteUserController = void 0;
-const DeleteUserService_1 = require("../../services/user/DeleteUserService");
-class DeleteUserController {
+exports.UpdateBannerArticleController = void 0;
+const UpdateBannerArticleService_1 = require("../../services/article/UpdateBannerArticleService");
+class UpdateBannerArticleController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user_id = req.query.user_id;
-            const deleteUserService = new DeleteUserService_1.DeleteUserService();
-            const userPhoto = yield deleteUserService.execute({
-                user_id,
-            });
-            return res.json(userPhoto);
+            const article_id = req.query.article_id;
+            const updateBannerArticleService = new UpdateBannerArticleService_1.UpdateBannerArticleService();
+            if (!req.file) {
+                throw new Error('error upload file');
+            }
+            else {
+                const { originalname, filename: banner } = req.file;
+                const article = yield updateBannerArticleService.execute({
+                    article_id,
+                    banner,
+                });
+                return res.json(article);
+            }
         });
     }
 }
-exports.DeleteUserController = DeleteUserController;
+exports.UpdateBannerArticleController = UpdateBannerArticleController;

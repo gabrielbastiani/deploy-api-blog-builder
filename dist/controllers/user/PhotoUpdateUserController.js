@@ -14,7 +14,7 @@ const PhotoUserUpdateService_1 = require("../../services/user/PhotoUserUpdateSer
 class PhotoUpdateUserController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { user_id } = req.body;
+            const user_id = req.query.user_id;
             const updateUserService = new PhotoUserUpdateService_1.PhotoUserUpdateService();
             if (!req.file) {
                 throw new Error('error upload file');

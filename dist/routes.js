@@ -43,6 +43,7 @@ const DespublishArticleController_1 = require("./controllers/article/DespublishA
 const ListByCategoryController_1 = require("./controllers/article/ListByCategoryController");
 const RemoveArticleController_1 = require("./controllers/article/RemoveArticleController");
 const UpdateArticleController_1 = require("./controllers/article/UpdateArticleController");
+const UpdateBannerArticleController_1 = require("./controllers/article/UpdateBannerArticleController");
 const ListExactArticleController_1 = require("./controllers/article/ListExactArticleController");
 const ListPageArticlesController_1 = require("./controllers/article/ListPageArticlesController");
 const AdminDashboardPageArticlesController_1 = require("./controllers/article/AdminDashboardPageArticlesController");
@@ -152,7 +153,8 @@ router.put('/article/datefuture', new DatePublishedArticleController_1.DatePubli
 router.get('/article/date', new AllDatePublishedController_1.AllDatePublishedController().handle);
 router.put('/article/despublish', isAuthenticated_1.isAuthenticated, new DespublishArticleController_1.DespublishArticleController().handle);
 router.delete('/article/remove', isAuthenticated_1.isAuthenticated, new RemoveArticleController_1.RemoveArticleController().handle);
-router.put('/article/update', isAuthenticated_1.isAuthenticated, upload.single('file'), new UpdateArticleController_1.UpdateArticleController().handle);
+router.put('/article/update', isAuthenticated_1.isAuthenticated, new UpdateArticleController_1.UpdateArticleController().handle);
+router.put('/article/banner/update', isAuthenticated_1.isAuthenticated, upload.single('file'), new UpdateBannerArticleController_1.UpdateBannerArticleController().handle);
 router.get('/article/exact', new ListExactArticleController_1.ListExactArticleController().handle);
 router.get('/article/all', new ListPageArticlesController_1.ListPageArticlesController().handle);
 router.get('/article/admin', isAuthenticated_1.isAuthenticated, new AdminDashboardPageArticlesController_1.AdminDashboardPageArticlesController().handle);
