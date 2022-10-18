@@ -4,7 +4,8 @@ import multer from 'multer';
 
 //-- ROTAS USER --
 import { CreateUserController } from './controllers/user/CreateUserController';
-import { UpdateUserController } from './controllers/user/UpdateUserController';
+import { UpdateUserNameController } from './controllers/user/UpdateUserNameController';
+import { UpdateUserEmailController } from './controllers/user/UpdateUserEmailController';
 import { PhotoUpdateUserController } from './controllers/user/PhotoUpdateUserController';
 import { AdminCreateUserController } from './controllers/user/AdminCreateUserController';
 import { RoleUserController } from './controllers/user/RoleUserController';
@@ -40,7 +41,10 @@ import { AllDatePublishedController } from './controllers/article/AllDatePublish
 import { DespublishArticleController } from './controllers/article/DespublishArticleController';
 import { ListByCategoryController } from './controllers/article/ListByCategoryController';
 import { RemoveArticleController } from './controllers/article/RemoveArticleController';
-import { UpdateArticleController } from './controllers/article/UpdateArticleController';
+import { UpdateArticleTagsController } from './controllers/article/UpdateArticleTagsController';
+import { UpdateArticleTitleController } from './controllers/article/UpdateArticleTitleController';
+import { UpdateArticleCategoryController } from './controllers/article/UpdateArticleCategoryController';
+import { UpdateArticleDescriptionController } from './controllers/article/UpdateArticleDescriptionController';
 import { UpdateBannerArticleController } from './controllers/article/UpdateBannerArticleController';
 import { ListExactArticleController } from './controllers/article/ListExactArticleController';
 import { ListPageArticlesController } from './controllers/article/ListPageArticlesController';
@@ -134,7 +138,8 @@ const upload = multer(uploadConfig.upload("./imgblog"));
 
 //-- ROTAS USER --
 router.post('/users', upload.single('file'), new CreateUserController().handle)
-router.put('/users/update', isAuthenticated, new UpdateUserController().handle)
+router.put('/users/update/name', isAuthenticated, new UpdateUserNameController().handle)
+router.put('/users/update/email', isAuthenticated, new UpdateUserEmailController().handle)
 router.put('/users/photo', isAuthenticated, upload.single('file'), new PhotoUpdateUserController().handle)
 router.post('/users/admin', upload.single('file'), new AdminCreateUserController().handle)
 router.put('/users/admin', new RoleUserController().handle)
@@ -169,7 +174,10 @@ router.put('/article/datefuture', new DatePublishedArticleController().handle)
 router.get('/article/date', new AllDatePublishedController().handle)
 router.put('/article/despublish', isAuthenticated, new DespublishArticleController().handle)
 router.delete('/article/remove', isAuthenticated, new RemoveArticleController().handle)
-router.put('/article/update', isAuthenticated, new UpdateArticleController().handle)
+router.put('/article/update/tags', isAuthenticated, new UpdateArticleTagsController().handle)
+router.put('/article/update/title', isAuthenticated, new UpdateArticleTitleController().handle)
+router.put('/article/update/category', isAuthenticated, new UpdateArticleCategoryController().handle)
+router.put('/article/update/description', isAuthenticated, new UpdateArticleDescriptionController().handle)
 router.put('/article/banner/update', isAuthenticated, upload.single('file'), new UpdateBannerArticleController().handle)
 router.get('/article/exact', new ListExactArticleController().handle)
 router.get('/article/all', new ListPageArticlesController().handle)
