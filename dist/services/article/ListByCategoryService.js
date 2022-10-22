@@ -21,7 +21,8 @@ class ListByCategoryService {
             //Pegar quantidade de todos os artigos
             const allarticles = yield prisma_1.default.article.findMany({
                 where: {
-                    categoryName: categoryName
+                    categoryName: categoryName,
+                    published: true
                 },
                 orderBy: {
                     created_at: 'desc'
@@ -29,7 +30,8 @@ class ListByCategoryService {
             });
             const articles = yield prisma_1.default.article.findMany({
                 where: {
-                    categoryName: categoryName
+                    categoryName: categoryName,
+                    published: true
                 },
                 skip,
                 take: limit,

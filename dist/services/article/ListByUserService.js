@@ -22,6 +22,7 @@ class ListByUserService {
             const allarticles = yield prisma_1.default.article.findMany({
                 where: {
                     name: name,
+                    published: true
                 },
                 orderBy: {
                     created_at: 'desc'
@@ -29,7 +30,8 @@ class ListByUserService {
             });
             const articles = yield prisma_1.default.article.findMany({
                 where: {
-                    name: name
+                    name: name,
+                    published: true
                 },
                 skip,
                 take: limit,

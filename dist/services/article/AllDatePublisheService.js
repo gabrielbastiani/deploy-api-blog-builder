@@ -31,7 +31,8 @@ class AllDatePublisheService {
             const dateFuture = (0, moment_1.default)(dateAll).format('DD/MM/YYYY HH:mm');
             console.log("Data futura:", dateFuture);
             const job = new CronJob('0 * * * * *', () => __awaiter(this, void 0, void 0, function* () {
-                const dateNow = (0, moment_1.default)(new Date()).format('DD/MM/YYYY HH:mm');
+                const nowDate = new Date();
+                const dateNow = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(nowDate);
                 console.log("Data atual:", dateNow);
                 if (dateNow === dateFuture) {
                     console.log('Publicado na data');

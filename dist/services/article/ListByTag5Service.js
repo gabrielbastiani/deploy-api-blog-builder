@@ -21,7 +21,8 @@ class ListByTag5Service {
             //Pegar quantidade de todos os artigos
             const allarticles = yield prisma_1.default.article.findMany({
                 where: {
-                    tagName5: tagName5
+                    tagName5: tagName5,
+                    published: true
                 },
                 orderBy: {
                     created_at: 'desc'
@@ -29,7 +30,8 @@ class ListByTag5Service {
             });
             const articles = yield prisma_1.default.article.findMany({
                 where: {
-                    tagName5: tagName5
+                    tagName5: tagName5,
+                    published: true
                 },
                 skip,
                 take: limit,
