@@ -48,6 +48,7 @@ const UpdateArticleTitleController_1 = require("./controllers/article/UpdateArti
 const UpdateArticleCategoryController_1 = require("./controllers/article/UpdateArticleCategoryController");
 const UpdateArticleDescriptionController_1 = require("./controllers/article/UpdateArticleDescriptionController");
 const UpdateBannerArticleController_1 = require("./controllers/article/UpdateBannerArticleController");
+const ListExactArticleIDController_1 = require("./controllers/article/ListExactArticleIDController");
 const ListExactArticleController_1 = require("./controllers/article/ListExactArticleController");
 const ListPageArticlesController_1 = require("./controllers/article/ListPageArticlesController");
 const AdminDashboardPageArticlesController_1 = require("./controllers/article/AdminDashboardPageArticlesController");
@@ -163,10 +164,11 @@ router.put('/article/update/title', isAuthenticated_1.isAuthenticated, new Updat
 router.put('/article/update/category', isAuthenticated_1.isAuthenticated, new UpdateArticleCategoryController_1.UpdateArticleCategoryController().handle);
 router.put('/article/update/description', isAuthenticated_1.isAuthenticated, new UpdateArticleDescriptionController_1.UpdateArticleDescriptionController().handle);
 router.put('/article/banner/update', isAuthenticated_1.isAuthenticated, upload.single('file'), new UpdateBannerArticleController_1.UpdateBannerArticleController().handle);
+router.get('/article/exact/id', isAuthenticated_1.isAuthenticated, new ListExactArticleIDController_1.ListExactArticleIDController().handle);
 router.get('/article/exact', new ListExactArticleController_1.ListExactArticleController().handle);
 router.get('/article/all', new ListPageArticlesController_1.ListPageArticlesController().handle);
 router.get('/article/admin', isAuthenticated_1.isAuthenticated, new AdminDashboardPageArticlesController_1.AdminDashboardPageArticlesController().handle);
-router.get('/article', isAuthenticated_1.isAuthenticated, new ArticlesAllController_1.ArticlesAllController().handle);
+router.get('/article', new ArticlesAllController_1.ArticlesAllController().handle);
 router.get('/article/filter', isAuthenticated_1.isAuthenticated, new AllArticlesController_1.AllArticlesController().handle);
 router.get('/article/search', new AllPublishedArticlesController_1.AllPublishedArticlesController().handle);
 router.get('/article/published/blog', new ListPublishedArticleController_1.ListPublishedArticleController().handle);

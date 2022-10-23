@@ -15,12 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageArticlesService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class PageArticlesService {
-    execute({ article_id }) {
+    execute({ title }) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
             const post = yield prisma_1.default.article.findUnique({
                 where: {
-                    id: article_id,
+                    title
                 }
             });
             const postPrevious = yield prisma_1.default.article.findFirst({

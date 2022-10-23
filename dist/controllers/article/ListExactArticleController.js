@@ -14,9 +14,9 @@ const ListExactArticleService_1 = require("../../services/article/ListExactArtic
 class ListExactArticleController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { article_id } = req.query;
+            const { title } = req.query;
             const listExactArticleService = new ListExactArticleService_1.ListExactArticleService();
-            const article = yield listExactArticleService.execute({ article_id });
+            const article = yield listExactArticleService.execute({ title });
             return res.json(article);
         });
     }

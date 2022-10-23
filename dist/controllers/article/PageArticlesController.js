@@ -14,10 +14,10 @@ const PageArticlesService_1 = require("../../services/article/PageArticlesServic
 class PageArticlesController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const article_id = req.query.article_id;
+            const title = req.query.title;
             const articlePage = new PageArticlesService_1.PageArticlesService();
             const articles = yield articlePage.execute({
-                article_id
+                title
             });
             return res.json(articles);
         });

@@ -8,22 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListExactArticleService = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class ListExactArticleService {
-    execute({ title }) {
+exports.ListExactArticleIDController = void 0;
+const ListExactArticleIDService_1 = require("../../services/article/ListExactArticleIDService");
+class ListExactArticleIDController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const ExactArticle = yield prisma_1.default.article.findUnique({
-                where: {
-                    title
-                }
-            });
-            return ExactArticle;
+            const { article_id } = req.query;
+            const listExactArticleIDService = new ListExactArticleIDService_1.ListExactArticleIDService();
+            const article = yield listExactArticleIDService.execute({ article_id });
+            return res.json(article);
         });
     }
 }
-exports.ListExactArticleService = ListExactArticleService;
+exports.ListExactArticleIDController = ListExactArticleIDController;

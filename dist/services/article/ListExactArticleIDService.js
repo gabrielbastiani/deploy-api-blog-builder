@@ -12,18 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListExactArticleService = void 0;
+exports.ListExactArticleIDService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class ListExactArticleService {
-    execute({ title }) {
+class ListExactArticleIDService {
+    execute({ article_id }) {
         return __awaiter(this, void 0, void 0, function* () {
             const ExactArticle = yield prisma_1.default.article.findUnique({
                 where: {
-                    title
+                    id: article_id
                 }
             });
             return ExactArticle;
         });
     }
 }
-exports.ListExactArticleService = ListExactArticleService;
+exports.ListExactArticleIDService = ListExactArticleIDService;
