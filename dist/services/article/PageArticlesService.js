@@ -20,7 +20,7 @@ class PageArticlesService {
         return __awaiter(this, void 0, void 0, function* () {
             const post = yield prisma_1.default.article.findUnique({
                 where: {
-                    title
+                    title: title,
                 }
             });
             const postPrevious = yield prisma_1.default.article.findFirst({
