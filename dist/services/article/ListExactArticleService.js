@@ -19,7 +19,7 @@ class ListExactArticleService {
         return __awaiter(this, void 0, void 0, function* () {
             const ExactArticle = yield prisma_1.default.article.findUnique({
                 where: {
-                    title
+                    title,
                 }
             });
             return ExactArticle;
