@@ -52,15 +52,15 @@ class AdminCreateUserService {
                 }
             });
             const transporter = nodemailer_1.default.createTransport({
-                host: "smtplw.com.br",
+                host: "smart.iagentesmtp.com.br",
                 port: 587,
                 auth: {
-                    user: "gabrielbastiani",
-                    pass: "xbZwBGam6780"
+                    user: "contato@builderseunegocioonline.com",
+                    pass: "45839a96"
                 }
             });
             yield transporter.sendMail({
-                from: "contato@smtpemailwebapp.com.br",
+                from: "contato@builderseunegocioonline.com.br",
                 to: "gabriel.bastiani@hotmail.com.br",
                 subject: "Confirme seu cadastro de usuario no Blog",
                 html: `<div style="background-color: rgb(223, 145, 0); color: black; padding: 0 55px;">
