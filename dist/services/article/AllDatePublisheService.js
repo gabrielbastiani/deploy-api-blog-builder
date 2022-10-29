@@ -17,6 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 const CronJob = require('cron').CronJob;
 const moment_1 = __importDefault(require("moment"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
+require('dotenv/config');
 class AllDatePublisheService {
     execute({ publishDate, article_id }) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,11 +46,11 @@ class AllDatePublisheService {
                         }
                     });
                     const transporter = nodemailer_1.default.createTransport({
-                        host: "smart.iagentesmtp.com.br",
+                        host: process.env.HOST_SMTP,
                         port: 587,
                         auth: {
-                            user: "contato@builderseunegocioonline.com",
-                            pass: "c7750326"
+                            user: process.env.USER_SMTP,
+                            pass: process.env.PASS_SMTP
                         }
                     });
                     yield transporter.sendMail({
